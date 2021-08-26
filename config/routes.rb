@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:index, :show, :new, :create]
 
-  resources :posts, only: [:index, :new, :create] do
+  resources :posts, only: [:index, :new, :create, :destroy] do
     member do
       resources :likes, only: [:create, :destroy]
     end

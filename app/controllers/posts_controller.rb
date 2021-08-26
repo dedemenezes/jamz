@@ -35,8 +35,15 @@ class PostsController < ApplicationController
     authorize Post
   end
 
+  def destroy
+
+  end
+
   private
 
+  def set_post
+    @post = Post.find(params[:id])
+  end
   def post_params
     params.require(:post).permit(:content, :user, :group, :temp_gif_url, photos: [])
   end
