@@ -50,6 +50,16 @@
   }
 }
 
+.post-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4 {
+    flex-grow: 1;
+  }
+  
+}
+
 .post-images {
   margin: 0.5rem 0;
   background-color: black;

@@ -1,0 +1,6 @@
+<div class="dropdown">
+    <i class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to  "Delete", post_path(post.id), class: "dropdown-item", method: :delete, remote:true, data: { confirm: "Are you sure?" } %>
+  </div>
+</div>
