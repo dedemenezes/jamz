@@ -20,4 +20,8 @@ class PostPolicy < ApplicationPolicy
   def gif?
     true
   end
+
+  def destroy?
+    record.user == user
+  end
 end
