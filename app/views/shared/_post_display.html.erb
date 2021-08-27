@@ -21,7 +21,9 @@
       <div class="post-content">
         <div class="post-text">
           <h4><%= post.content %></h4>
-          <%= render "shared/delete_dropdown", post: post %>
+          <% if post.user == @user %>
+            <%= render "shared/delete_dropdown", post: post %>
+          <% end %>
         </div>
         <div class="post-images text-center">
           <% post.photos.each do |photo| %>
