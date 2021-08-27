@@ -3,6 +3,7 @@ require 'open-uri'
 class PostsController < ApplicationController
   include ActionView::Helpers::DateHelper
   layout "gifs", only: :gif
+  before_action :set_post, only: :destroy
 
   def index
     @posts = Post.includes(:user).order(updated_at: :desc)
@@ -36,14 +37,22 @@ class PostsController < ApplicationController
   end
 
   def destroy
-
-  end
-
-  private
-
-  def set_post
     @post = Post.find(params[:id])
+    authorize @post
+    if @post.destroy
+      redirect_to request.referrer
+      flash[:alert] = "Post deleted"
+    else
+      render :feed
+    end
+    
   end
+  
+  private
+  
+  def set_post
+  end
+
   def post_params
     params.require(:post).permit(:content, :user, :group, :temp_gif_url, photos: [])
   end
