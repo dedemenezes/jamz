@@ -7,7 +7,10 @@ class LikesController < ApplicationController
     @like.post = @post
     authorize @like
     if @like.save
-      redirect_to request.referrer
+      respond_to do |format|
+        format.js
+      end
+      # redirect_to request.referrer
     end
   end
 
@@ -15,11 +18,14 @@ class LikesController < ApplicationController
     @like = @post.likes.find_by(user: current_user.id)
     authorize @like
     if @like.destroy
-      redirect_to request.referrer
+      respond_to do |format|
+        format.js
+      end
+      # redirect_to request.referrer
     end
   end
-  
-  private 
+
+  private
 
   def set_post
     @post = Post.find(params[:id])
