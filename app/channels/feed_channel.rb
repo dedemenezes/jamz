@@ -1,6 +1,6 @@
 class FeedChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "everyone"
+    stream_for "everyone"
   end
 
   def unsubscribed

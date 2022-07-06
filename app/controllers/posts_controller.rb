@@ -26,7 +26,7 @@ class PostsController < ApplicationController
         file = URI.open(@post.temp_gif_url)
         @post.photos.attach(io: file, filename: 'some-image.gif', content_type: 'image/gif')
       end
-      ActionCable.server.broadcast(
+      FeedChannel.broadcast_to(
         'everyone',
         render_to_string(partial: 'posts/post', locals: { post: @post, posts: @posts })
       )
