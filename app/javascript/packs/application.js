@@ -61,12 +61,14 @@ import { submittingPost } from "../plugins/submitting_post";
 
 import { loadDynamicBannerText } from "../plugins/banner_typed";
 
+import initFeedChannel  from "../channels/feed_channel";
 
 document.addEventListener('turbolinks:load', () => {
 
   initAutocomplete();
 
   initChatroomCable();
+  initFeedChannel();
 
   initMapbox();
 
@@ -91,7 +93,7 @@ document.addEventListener('turbolinks:load', () => {
   submittingPost();
 
   loadDynamicBannerText();
-  
+
   initNavbar();
 
 });
