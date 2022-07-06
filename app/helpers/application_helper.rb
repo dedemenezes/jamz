@@ -3,7 +3,7 @@ module ApplicationHelper
     if user.photo.attached?
       user.photo.key
     else
-      "jun7vge4yvdmrhi3wti1.png"
+      "https://cdn.imagecomics.com/assets/img/default-user-square.svg"
     end
   end
 
