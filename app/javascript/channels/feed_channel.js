@@ -5,7 +5,11 @@ const initFeedCable = () => {
 
   if (feed) {
     console.log('subscribe user');
-    consumer.subscriptions.create('FeedChannel');
+    consumer.subscriptions.create('FeedChannel', {
+      received(data) {
+        console.log(data)
+      }
+    })
   }
 };
 
