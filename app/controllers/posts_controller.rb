@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @posts = Post.all.order(updated_at: :desc)
     @post = Post.new(post_params)
     @post.user = current_user
     @post.group = post_params[:group] if params[:group].present?
@@ -25,6 +26,10 @@ class PostsController < ApplicationController
         file = URI.open(@post.temp_gif_url)
         @post.photos.attach(io: file, filename: 'some-image.gif', content_type: 'image/gif')
       end
+      ActionCable.server.broadcast(
+        'everyone',
+        render_to_string(partial: 'posts/post', locals: { post: @post, posts: @posts })
+      )
       redirect_to request.referrer
       # redirect_to feed_users_path
     else
@@ -45,11 +50,11 @@ class PostsController < ApplicationController
     else
       render :feed
     end
-    
+
   end
-  
+
   private
-  
+
   def set_post
   end
 
