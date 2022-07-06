@@ -1,6 +1,6 @@
 import consumer from "./consumer";
 
-const initFeedChannel = () => {
+const initFeedCable = () => {
   const feed = document.getElementById('feed');
 
   if (feed) {
@@ -9,4 +9,4 @@ const initFeedChannel = () => {
   }
 };
 
-export default initFeedChannel;
+export default initFeedCable;
