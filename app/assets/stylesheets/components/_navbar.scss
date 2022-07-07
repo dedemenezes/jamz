@@ -20,7 +20,16 @@
 
 .nav-link {
   color: #FFFFFF !important;
+  &:hover {
+    border-bottom: 3px solid #fc9948 !important;
+    padding-bottom: 2px;
+  }
 }
+
+ul.navbar-nav *:not(:last-child) {
+  margin-right: .25rem;
+}
+
 
 .active-nav {
   border-bottom: 3px solid #FF8520 !important;
