@@ -1,14 +1,16 @@
 const submitOnShiftEnter = () => {
   // click button
   const textArea = document.getElementById('post_content');
-  textArea.addEventListener('keydown', (event) => {
-    if (document.activeElement === textArea) {
-      if (event.code === 'Enter' && event.ctrlKey) {
-        const btnSubmit = document.getElementById('post-submit');
-        btnSubmit.click();
+  if(textArea) {
+    textArea.addEventListener('keydown', (event) => {
+      if (document.activeElement === textArea) {
+        if (event.code === 'Enter' && event.ctrlKey) {
+          const btnSubmit = document.getElementById('post-submit');
+          btnSubmit.click();
+        }
       }
-    }
-  })
+    })
+  }
   // btnSubmit.click();
 }
 
