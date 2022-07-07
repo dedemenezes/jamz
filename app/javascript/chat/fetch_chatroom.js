@@ -20,20 +20,22 @@ const fetchChatroom = () => {
         data: "",
         success: function(data) {
           let html_doc = data.getElementById('chatroom');
-          newTarget.insertAdjacentHTML('beforeend', `<div class='opened-chatroom'>${html_doc.innerHTML}</div>`)
-          const id = newTarget.dataset.chatroomId;
-          const formMessage = document.getElementById('messages')
-          const messageInput = document.getElementById("message_content")
-          messageInput.focus()
-          consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
-            received(data) {
-              formMessage.insertAdjacentHTML("beforeend", data);
-              styleMessage();
-            },
-          });
-          cleanInputMessage();
-          closeChat();
-          },
+          if (action.parentElement.nextElementSibling === null){
+            newTarget.insertAdjacentHTML('beforeend', `<div class='opened-chatroom'>${html_doc.innerHTML}</div>`)
+            const id = newTarget.dataset.chatroomId;
+            const formMessage = document.getElementById('messages')
+            const messageInput = document.getElementById("message_content")
+            messageInput.focus()
+            consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
+              received(data) {
+                formMessage.insertAdjacentHTML("beforeend", data);
+                styleMessage();
+              },
+            });
+            cleanInputMessage();
+            closeChat();
+          }
+        },
         error: function(data) {}
       })
     });
