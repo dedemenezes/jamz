@@ -33,7 +33,9 @@ class PostsController < ApplicationController
       redirect_to request.referrer
       # redirect_to feed_users_path
     else
-      render :new
+      @user = current_user
+      @chat_memberships = ChatMembership.where(user: @user)
+      render 'users/feed'
     end
   end
 
