@@ -7,6 +7,7 @@ class LikesController < ApplicationController
     @like.post = @post
     authorize @like
     if @like.save
+      ActionCable.server.broadcast('like_channel', { postId: @post.id, likes: @post.likes.size }.to_json)
       respond_to do |format|
         format.js
       end
@@ -18,6 +19,7 @@ class LikesController < ApplicationController
     @like = @post.likes.find_by(user: current_user.id)
     authorize @like
     if @like.destroy
+      ActionCable.server.broadcast('like_channel', { postId: @post.id, likes: @post.likes.size }.to_json)
       respond_to do |format|
         format.js
       end

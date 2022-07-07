@@ -1,6 +1,7 @@
-class PostChannel < ApplicationCable::Channel
+class LikeChannel < ApplicationCable::Channel
   def subscribed
-    stream_for "everyone"
+    # binding.pry
+    stream_from "like_channel"
   end
 
   def unsubscribed

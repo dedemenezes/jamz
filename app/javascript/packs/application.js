@@ -63,12 +63,17 @@ import { loadDynamicBannerText } from "../plugins/banner_typed";
 
 import initFeedCable  from "../channels/feed_channel";
 
+import initLikeCable from "../channels/like_channel";
+
 document.addEventListener('turbolinks:load', () => {
 
   initAutocomplete();
 
   initChatroomCable();
+
   initFeedCable();
+
+  initLikeCable();
 
   initMapbox();
 
