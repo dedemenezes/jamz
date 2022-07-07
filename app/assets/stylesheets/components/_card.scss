@@ -24,7 +24,7 @@
   border-radius: 16px;
   color: $gray;
   padding: 48px 16px;
-  margin: 16px 30px;
+  // margin: 16px 30px;
   box-shadow: 2px 2px 12px rgb(200, 200, 200);
   h3 {
     font-family: $body-font;
@@ -40,4 +40,12 @@
     color: $gray;
     box-shadow: 2px 2px 12px #efc7d1;
   }
+}
+
+// User Card Grid
+.users-template {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  text-align: center;
 }
