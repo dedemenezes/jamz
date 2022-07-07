@@ -45,7 +45,19 @@
 // User Card Grid
 .users-template {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
   text-align: center;
+}
+
+@media (min-width: 624px) {
+  .users-template {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 824px) {
+  .users-template {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
